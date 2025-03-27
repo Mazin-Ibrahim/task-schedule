@@ -22,7 +22,7 @@ func scheduleTask(db *sql.DB, id int64) error {
 	c := cron.New()
 	c.AddFunc(task.Schedule, func() {
 		fmt.Printf("Running task: %v\n %s\n", time.Now(), task.Name)
-		// Add task logic here
+		sendNotfiyEmail(task.Name)
 	})
 	c.Start()
 	return nil
